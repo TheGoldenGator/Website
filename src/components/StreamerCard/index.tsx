@@ -31,12 +31,13 @@ export const StreamerCard = ({
     return (
       <div className="card">
         <div className="thumbnail">
-          <img width="340" height="186" alt="thumbnail" src={stream_thumbnail_url.replace('{width}', '640').replace('{height}', '360')} />
+          <a target="_blank" rel="noopener noreferrer" href={"https://twitch.tv/" + user_login}>
+            <img width="340" height="186" alt="thumbnail" src={stream_thumbnail_url.replace('{width}', '640').replace('{height}', '360')} />
+          </a>
           <p className="viewer-count">{stream_viewer_count} viewers</p>
         </div>
         <div className="footer">
           <p className="title">{stream_title}</p>
-
           <div className="pfp-username">
             <img className="pfp" alt={user_login + "-pfp"} src={user_profile_image_url} />
             <span className="username">

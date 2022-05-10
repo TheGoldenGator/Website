@@ -20,12 +20,6 @@
   position: relative;
   text-align: center;
   color: white;
-  transform-origin: 50% 50%;
-  transition: transform .2s;
-}
-
-.thumbnail:hover {
-  transform: scale(1.5);
 }
 
 .footer {
@@ -33,7 +27,7 @@
 }
 
 .title {
-  font-size: 0.9rem;
+  font-size: 1.02rem;
   text-align: left;
   font-weight: bold;
   white-space: nowrap;
@@ -42,8 +36,8 @@
 }
 
 .pfp {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: #9146FF;
   padding: 2px;
@@ -66,7 +60,3 @@
   font-weight: bold;
 }
 
-.logo {
-  width: 9%;
-  height: 3%;
-}
