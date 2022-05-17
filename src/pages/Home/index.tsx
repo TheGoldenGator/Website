@@ -5,7 +5,7 @@ import "./index.css";
 function Home() {
   const [streams, setStreams] = useState<StreamerProps[]>();
   useEffect(() => {
-    fetch("http://localhost:8000/streams?status=online")
+    fetch("http://localhost:7500/streams?status=online")
       .then((response) => response.json())
       .then((json) => setStreams(json.data))
   }, []);

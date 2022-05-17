@@ -3,25 +3,31 @@ import Home from './pages/Home';
 import { Link, Route, Routes } from 'react-router-dom';
 import Logo from "./The_Golden_Gator_Logo.png";
 import Members from './pages/Members';
+import About from './pages/About';
 
 function App() {
   return (
     <div className="App">
-      <div className="header">
-        <img className="logo" src={Logo} alt="logo" />
-        <div className="header-right">
+      <nav className="navbar">
+        <div className="logo">
           <Link to={{ pathname: "/" }}>
-            <a className="active" href="#home">Home</a>
+            <img className="logo" src={Logo} alt="logo" />
           </Link>
-          <Link to={{ pathname: "/members" }}>
-            <a href="#contact">Members</a>
-          </Link>
-          <a href="#about">About</a>
         </div>
-      </div>
+        <ul className="nav-links">
+          <input type="checkbox" id="checkbox_toggle" />
+          <label htmlFor="checkbox_toggle" className="hamburger">&#9776;</label>
+          <div className="menu">
+            <li><Link to={{ pathname: "/" }}>Home</Link></li>
+            <li><Link to={{ pathname: "/members" }}>Members</Link></li>
+            <li><Link to={{ pathname: "/about" }}>About</Link></li>
+          </div>
+        </ul>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/members" element={<Members />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
 .card {
   /* border: 2px solid #e7e7e7;
   border-radius: 4px; */
-  width: 343px;
+  width: 400px;
   height: 100%;
   justify-items: center;
 }
@@ -22,6 +22,11 @@
   color: white;
 }
 
+.thumbnail-image {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .footer {
   width: 100%;
 }
@@ -36,8 +41,8 @@
 }
 
 .pfp {
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #9146FF;
   padding: 2px;
@@ -48,6 +53,8 @@
 
 .pfp-username {
   display: flex;
+  flex-direction: row;
+  padding-top: 10px;
 }
 
 .pfp-username p {
@@ -55,8 +62,31 @@
 }
 
 .username {
-  padding-left: 5px;
+  padding-left: 10px;
   margin: auto 0;
   font-weight: bold;
+  font-size: 1rem;
+  text-align: left;
+  flex-basis: 50%;
 }
 
+.game-name {
+  padding-left: 10px;
+  margin: auto auto;
+  color: #bf94ff;
+  font-weight: bold;
+  font-size: 1rem;
+  align-self: right;
+  text-align: right;
+  flex-basis: 50%;
+}
+
+.social-media-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.social-media-container {
+  display: flex;
+  justify-content: space-evenly;
+}
