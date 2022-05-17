@@ -1,10 +1,10 @@
 import "./index.css";
-import { ReactComponent as TwitchLogo } from "./twitch.svg"
+/* import { ReactComponent as TwitchLogo } from "./twitch.svg"
 import { ReactComponent as RedditLogo } from "./reddit.svg"
 import { ReactComponent as TwitterLogo } from "./twitter.svg"
+ */
 
-
-function SocialLinks(urls: string[]) {
+/* function SocialLinks(urls: string[]) {
   const socialMedia: any[] = [];
   urls.forEach(url => {
     const te = url.replace(/.+\/\/|www.|\..+/g, "");
@@ -37,7 +37,7 @@ function SocialLinks(urls: string[]) {
   });
 
   return socialMedia;
-}
+} */
 
 export type StreamerProps = {
   status: "offline" | "online";
