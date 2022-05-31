@@ -46,8 +46,14 @@ export const TestStreamerCard = ({
   tiktok,
 }: StreamerProps) => {
   const parseDate = (date: string) => {
-    const parse = new Date(date);
-    return `${parse.getHours()}:${(parse.getMinutes()<10?'0':'') + parse.getMinutes()}`;
+    const now = new Date().getTime();
+    const parse = new Date(date).getTime();
+    const diff = now - parse;
+
+    const hours = Math.floor(diff / 3.6e6);
+    const minutes = Math.floor((diff % 3.6e6) / 6e4);
+
+    return `${(hours < 10 ? '0' : '') + hours}:${(minutes < 10 ? '0' : '') + minutes}`;
   }
   if (status === "online") {
     return (
@@ -64,7 +70,7 @@ export const TestStreamerCard = ({
                 />
               </a>
               <div className="uptime">
-                <AccessTime fontSize="medium"/>
+                <AccessTime fontSize="medium" />
                 <span>{parseDate(stream_started_at)}</span>
               </div>
               {/* <p className="uptime"><AccessTime ></AccessTime></p> */}
