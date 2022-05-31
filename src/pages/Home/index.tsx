@@ -5,7 +5,7 @@ import "./index.css";
 function Home() {
   setInterval(() => {
     window.location.reload();
-  }, 60 * 5000); // 5 mins
+  }, 300000); // 5 mins
 
   const [streams, setStreams] = useState<StreamerProps[]>();
   useEffect(() => {

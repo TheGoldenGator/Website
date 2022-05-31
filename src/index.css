@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+abbr[title] {
+  border-bottom: none !important;
+  cursor: inherit !important;
+  text-decoration: none !important;
+}
+
 /* Style the header with a grey background and some padding */
 .header {
   overflow: hidden;

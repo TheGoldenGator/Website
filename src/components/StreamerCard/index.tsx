@@ -91,7 +91,7 @@ export const StreamerCard = ({
           <p className="viewer-count">{stream_viewer_count} viewers</p>
         </div>
         <div className="footer">
-          <p className="title">{stream_title}</p>
+          <p className="title"><abbr title={stream_title}>{stream_title}</abbr></p>
           <div className="pfp-username">
             <img className="pfp" alt='' src={user_profile_image_url} />
             <span className="username">
