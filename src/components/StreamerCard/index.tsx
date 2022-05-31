@@ -41,15 +41,15 @@ import { ReactComponent as TwitterLogo } from "./twitter.svg"
 
 export type StreamerProps = {
   status: "offline" | "online";
-  user_id: number;
+  user_id: string;
   user_login: string;
   user_display_name: string;
   user_profile_image_url: string;
-  stream_id: number;
+  stream_id: string;
   stream_title: string;
   stream_game_id: string;
   stream_game_name: string;
-  stream_viewer_count: number;
+  stream_viewer_count: string;
   stream_thumbnail_url: string;
   twitch: string;
   reddit: string;
