@@ -85,7 +85,7 @@ export const StreamerCard = ({
       <div className="card">
         <div className="thumbnail">
           <a target="_blank" rel="noopener noreferrer" href={"https://twitch.tv/" + user_login}>
-            <img className="thumbnail-image" width="395" height="220" alt="thumbnail" src={stream_thumbnail_url.replace('{width}', '640').replace('{height}', '360')} />
+            <img className="thumbnail-image" width="395" height="220" alt="" src={stream_thumbnail_url.replace('{width}', '640').replace('{height}', '360')} />
             {/* <span style={{width: "395px", height: "220px", backgroundImage: `url(${stream_thumbnail_url.replace('{width}', '640').replace('{height}', '360')})`}}></span> */}
           </a>
           <p className="viewer-count">{stream_viewer_count} viewers</p>
@@ -93,7 +93,7 @@ export const StreamerCard = ({
         <div className="footer">
           <p className="title">{stream_title}</p>
           <div className="pfp-username">
-            <img className="pfp" alt={user_login + "-pfp"} src={user_profile_image_url} />
+            <img className="pfp" alt='' src={user_profile_image_url} />
             <span className="username">
               {user_display_name}
             </span>

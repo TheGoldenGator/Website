@@ -3,6 +3,10 @@ import { StreamerCard, StreamerProps } from "../../components/StreamerCard";
 import "./index.css";
 
 function Home() {
+  setInterval(() => {
+    window.location.reload();
+  }, 60 * 5000); // 5 mins
+
   const [streams, setStreams] = useState<StreamerProps[]>();
   useEffect(() => {
     fetch("https://api.thegoldengator.tv/streams?status=online")
