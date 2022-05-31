@@ -51,6 +51,7 @@ export type StreamerProps = {
   stream_game_name: string;
   stream_viewer_count: string;
   stream_thumbnail_url: string;
+  stream_started_at: string;
   twitch: string;
   reddit: string;
   instagram: string;
@@ -72,6 +73,7 @@ export const StreamerCard = ({
   stream_game_name,
   stream_viewer_count,
   stream_thumbnail_url,
+  stream_started_at,
   twitch,
   reddit,
   instagram,

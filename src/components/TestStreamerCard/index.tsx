@@ -1,4 +1,5 @@
-import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+import { AccessTime } from "@mui/icons-material";
+import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import "./index.css"
 
 export type StreamerProps = {
@@ -13,6 +14,7 @@ export type StreamerProps = {
   stream_game_name: string;
   stream_viewer_count: string;
   stream_thumbnail_url: string;
+  stream_started_at: string;
   twitch: string;
   reddit: string;
   instagram: string;
@@ -34,6 +36,7 @@ export const TestStreamerCard = ({
   stream_game_name,
   stream_viewer_count,
   stream_thumbnail_url,
+  stream_started_at,
   twitch,
   reddit,
   instagram,
@@ -42,6 +45,10 @@ export const TestStreamerCard = ({
   youtube,
   tiktok,
 }: StreamerProps) => {
+  const parseDate = (date: string) => {
+    const parse = new Date(date);
+    return `${parse.getHours()}:${(parse.getMinutes()<10?'0':'') + parse.getMinutes()}`;
+  }
   if (status === "online") {
     return (
       <>
@@ -56,6 +63,11 @@ export const TestStreamerCard = ({
                   alt=""
                 />
               </a>
+              <div className="uptime">
+                <AccessTime fontSize="medium"/>
+                <span>{parseDate(stream_started_at)}</span>
+              </div>
+              {/* <p className="uptime"><AccessTime ></AccessTime></p> */}
               <p className="viewer-count">{stream_viewer_count} viewers</p>
             </div>
             <CardContent>

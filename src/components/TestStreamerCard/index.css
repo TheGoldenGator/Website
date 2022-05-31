@@ -6,12 +6,25 @@
   justify-items: center;
 }
 
+.uptime {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  margin: 0;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(19, 19, 19, 0.6);
+}
+
 .viewer-count {
   position: absolute;
   bottom: 8px;
   left: 5px;
   margin: 0;
-  padding: 3px;
+  padding: 5px;
   border-radius: 5px;
   background-color: rgba(19, 19, 19, 0.6);
 }
@@ -32,7 +45,7 @@
 }
 
 .title {
-  font-size: 1.02rem;
+  font-size: 0.93rem;
   text-align: left;
   font-weight: bold;
   white-space: nowrap;
@@ -65,7 +78,7 @@
   padding-left: 10px;
   margin: auto 0;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-align: left;
   flex-basis: 50%;
 }
