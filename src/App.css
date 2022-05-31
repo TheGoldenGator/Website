@@ -55,12 +55,6 @@ li {
 }
 
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: #202020;
-  color: #b6985b;
   margin-bottom: 20px;
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { StreamerCard, StreamerProps } from "../../components/StreamerCard";
+import { StreamerProps } from "../../components/StreamerCard";
+import { TestStreamerCard } from "../../components/TestStreamerCard";
 import "./index.css";
 
 function Home() {
@@ -20,7 +21,7 @@ function Home() {
           <div className="cards">
             {streams &&
               streams.map((item) => (
-                StreamerCard(item)
+                TestStreamerCard(item)
               ))}
           </div>
         </div>
