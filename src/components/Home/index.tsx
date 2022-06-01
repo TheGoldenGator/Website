@@ -16,14 +16,22 @@ function Home() {
 
   return (
     <div className="background">
-        <div className="stream-cards">
-          <div className="cards">
-            {streams &&
-              streams.map((item) => (
-                StreamerCard(item)
-              ))}
-          </div>
+      <div className="stream-cards">
+        <div className="cards">
+          {streams &&
+            streams.map((item) => (
+              <>
+                {
+                  item ? (
+                    StreamerCard(item)
+                  ) : (
+                    <p>Loading</p>
+                  )
+                }
+              </>
+            ))}
         </div>
+      </div>
     </div>
   );
 }

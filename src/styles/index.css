@@ -97,12 +97,18 @@
 }
 
 .title {
+  color: white;
   font-size: 0.93rem;
   text-align: left;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: all 0.35s ease-in-out;
+}
+
+.stream-card:hover .title {
+  color: #e2c286;
 }
 
 .pfp {

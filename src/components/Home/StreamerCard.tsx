@@ -1,5 +1,5 @@
 import { AccessTime } from "@mui/icons-material";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Skeleton, Typography } from "@mui/material";
 import "../../styles/index.css"
 
 export type StreamerProps = {
@@ -56,21 +56,30 @@ export const StreamerCard = ({
     return `${(hours < 10 ? '0' : '') + hours}:${(minutes < 10 ? '0' : '') + minutes}`;
   }
   if (status === "online") {
+    const loading = false;
     return (
-      <>
+      <div className="stream-card">
         <a target="_blank" rel="noopener noreferrer" href={"https://twitch.tv/" + user_login}>
           <Card sx={{ maxWidth: 400 }}>
             <div className="thumbnail">
               <a target="_blank" rel="noopener noreferrer" href={"https://twitch.tv/" + user_login}>
-                <CardMedia
-                  component="img"
-                  height="220"
-                  image={stream_thumbnail_url.replace('{width}', '420').replace('{height}', '220')}
-                  alt=""
-                />
+                {
+                  (loading)
+                    ? <Skeleton variant="rectangular" width={400} height={220} />
+                    : <CardMedia
+                      component="img"
+                      height="220"
+                      image={stream_thumbnail_url.replace('{width}', '420').replace('{height}', '220')}
+                      alt=""
+                    />
+                }
               </a>
               <div className="uptime">
-                <AccessTime fontSize="medium" />
+                <AccessTime fontSize="small" sx={{
+                  marginRight: '3px',
+                  marginTop: '2px',
+                  fontSize: '18px',
+                }} />
                 <span>{parseDate(stream_started_at)}</span>
               </div>
               {/* <p className="uptime"><AccessTime ></AccessTime></p> */}
@@ -78,23 +87,39 @@ export const StreamerCard = ({
             </div>
             <CardContent>
               <Typography variant="body1" color="text.secondary">
-                <p className="title"><abbr title={stream_title}>{stream_title}</abbr></p>
+                {
+                  (loading)
+                  ? <Skeleton variant="text" />
+                  : <p className="title"><abbr title={stream_title}>{stream_title}</abbr></p>
+                }
               </Typography>
               <Typography variant="body2" align="left">
                 <div className="pfp-username">
-                  <img className="pfp" alt='' src={user_profile_image_url} />
+                  {
+                    (loading)
+                    ? <Skeleton variant="circular" width={40} height={35} />
+                    : <img className="pfp" alt='' src={user_profile_image_url} />
+                  }
                   <span className="username">
-                    {user_display_name}
+                    {
+                      (loading)
+                      ? <Skeleton variant="text" />
+                      : user_display_name
+                    }
                   </span>
                   <span className="game-name">
-                    {stream_game_name}
+                    {
+                      (loading)
+                      ? <Skeleton variant="text" />
+                      : stream_game_name
+                    }
                   </span>
                 </div>
               </Typography>
             </CardContent>
           </Card >
         </a>
-      </>
+      </div>
     );
   }
 }
