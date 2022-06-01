@@ -1,8 +1,8 @@
-import './App.css';
-import Home from './pages/Home';
+import '../styles/App.css';
+import Home from './Home';
 import { Route, Routes } from 'react-router-dom';
-import About from './pages/About';
-import NavBar from './components/NavBar';
+import About from './About';
+import NavBar from './NavBar';
 import { createTheme, ThemeProvider } from '@mui/material';
 
 function App() {

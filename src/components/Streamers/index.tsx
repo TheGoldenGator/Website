@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MemberCard, MemberProps } from "../../components/MemberCard";
+import { MemberCard, MemberProps } from "./MemberCard";
 
 function Members() {
   const [members, setMembers] = useState<MemberProps[]>();

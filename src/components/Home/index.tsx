@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { StreamerProps } from "../../components/StreamerCard";
-import { TestStreamerCard } from "../../components/TestStreamerCard";
-import "./index.css";
+import "../../styles/index.css";
+import { StreamerProps, StreamerCard } from "./StreamerCard";
 
 function Home() {
   setInterval(() => {
@@ -21,7 +20,7 @@ function Home() {
           <div className="cards">
             {streams &&
               streams.map((item) => (
-                TestStreamerCard(item)
+                StreamerCard(item)
               ))}
           </div>
         </div>

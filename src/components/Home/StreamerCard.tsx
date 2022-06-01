@@ -1,6 +1,6 @@
 import { AccessTime } from "@mui/icons-material";
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import "./index.css"
+import "../../styles/index.css"
 
 export type StreamerProps = {
   status: "offline" | "online";
@@ -24,7 +24,7 @@ export type StreamerProps = {
   tiktok: string;
 }
 
-export const TestStreamerCard = ({
+export const StreamerCard = ({
   status,
   user_id,
   user_login,
