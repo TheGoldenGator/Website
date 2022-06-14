@@ -2,12 +2,10 @@ import {
   Card,
   CardContent,
   Typography,
-  CardActions,
   Avatar,
   Grow,
 } from '@mui/material'
 import '../../styles/index.css'
-import Socials from './Socials'
 
 export interface MemberProps {
   id: number
