@@ -1,6 +1,7 @@
 /* Nav Bar */
 .logo {
-  width: 150px;
+  width: 90px;
+  object-fit: cover;
   padding-top: 5px;
 }
 
@@ -54,7 +55,7 @@
   /* border: 2px solid #e7e7e7;
   border-radius: 4px; */
   width: 400px;
-  height: 100%;
+  height: max-content;
   justify-items: center;
 }
 
@@ -64,20 +65,34 @@
   flex-wrap: wrap;
   position: absolute;
   top: 8px;
-  right: 5px;
+  right: 8px;
   margin: 0;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 3px 3px 3px 3px;
+  border-radius: 3px;
   background-color: rgba(19, 19, 19, 0.6);
+}
+
+.thumbnail-live {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  margin: 0;
+  padding: 3px 3px 3px 3px;
+  border-radius: 3px;
+  background-color: #eb0400;
 }
 
 .viewer-count {
   position: absolute;
   bottom: 8px;
-  left: 5px;
+  left: 8px;
   margin: 0;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 3px 3px 3px 3px;
+  border-radius: 3px;
   background-color: rgba(19, 19, 19, 0.6);
 }
 
@@ -104,7 +119,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: all 0.35s ease-in-out;
+  transition: all 0.20s ease-in-out;
 }
 
 .stream-card:hover .title {
@@ -112,14 +127,16 @@
 }
 
 .pfp {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background-color: #9146FF;
-  padding: 2px;
+  background-color: #000000;
   float: left;
   align-items: center;
   display: flex;
+  border: 2px solid #9146FF;
+  border-style: soild;
+  border-color: #bf94ff;
 }
 
 .pfp-username {
@@ -141,6 +158,19 @@
   flex-basis: 50%;
 }
 
+.streamer-links {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.streamer-links-icon {
+  fill: white;
+  width: 28px;
+  height: 28px;
+}
+
 .game-name {
   padding-left: 10px;
   margin: auto auto;
@@ -150,6 +180,9 @@
   align-self: right;
   text-align: right;
   flex-basis: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .social-media-icon {
@@ -170,9 +203,51 @@
 
 .contact {
   margin: 0 auto;
+  float: center;
 }
 
 .contact-icon {
   margin: 15px;
   float: left;
+}
+
+/* MEMBERS */
+.member-cards {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 92.5%;
+}
+
+.member-social-media-icon {
+  height: 23px;
+  width: 23px;
+  fill: rgb(119, 119, 119);
+  transition: all 0.19s ease-in-out;
+}
+
+.member-social-media-icon:hover {
+  fill: #e2c286;
+}
+
+.about-social-media-icon {
+  height: 64px;
+  width: 64px;
+  fill: rgb(119, 119, 119);
+  transition: all 0.19s ease-in-out;
+}
+
+.about-social-media-icon:hover {
+  fill: #e2c286;
+}
+
+#about-discord {
+  color: rgb(119, 119, 119);
+  margin-top: 25px;
+  font-weight: bold;
+  transition: all 0.19s ease-in-out;
+}
+
+#about-discord:hover {
+  fill: #e2c286;
 }
