@@ -44,7 +44,7 @@ function Home() {
     fetch(
       dev // http://localhost:8000/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}
         ? `http://localhost:8000/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}`
-        : 'https://api.thegoldengator.tv/streams?status=online',
+        : `https://api.thegoldengator.tv/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}`,
     )
       .then((response) => response.json())
       .then((json) => {
