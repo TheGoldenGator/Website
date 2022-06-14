@@ -16,7 +16,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import SadgeEmote from '../../images/Sadge.png'
 
 function Home() {
-  const dev = true
+  const dev = false
   setInterval(() => {
     window.location.reload()
   }, 300000) // 5 mins
