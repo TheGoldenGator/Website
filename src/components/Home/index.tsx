@@ -31,7 +31,7 @@ function Home() {
   const [sortList, setSortList] = useState(
     localStorage.getItem('sort') !== null
       ? localStorage.getItem('sort')
-      : 'viewers',
+      : 'viewers_high',
   )
 
   // Pagination
@@ -40,11 +40,13 @@ function Home() {
   const [totalResults, setTotalResults] = useState<number>(1)
   const [actualPage, setActualPage] = useState<number>(1)
 
+  const limit = (localStorage.getItem('status') === "online") ? 200 : 12
+
   useEffect(() => {
     fetch(
       dev // http://localhost:8000/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}
-        ? `http://localhost:8000/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}`
-        : `https://api.thegoldengator.tv/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}`,
+        ? `http://localhost:8000/streams?page=${actualPage}&limit=${limit}&status=${sortStatus}&sort=${sortList}`
+        : `https://api.thegoldengator.tv/streams?page=${actualPage}&limit=${limit}&status=${sortStatus}&sort=${sortList}`,
     )
       .then((response) => response.json())
       .then((json) => {
@@ -203,7 +205,8 @@ function Home() {
           )}
         </div>
       </div>
-      {streams?.length === 0 ? (
+      
+      {limit === 200 ? (
         <></>
       ) : (
         <Stack
@@ -235,7 +238,7 @@ function Home() {
         </Stack>
       )}
 
-      {streams?.length === 0 ? (
+      {limit === 200 ? (
         <></>
       ) : (
         <Stack
