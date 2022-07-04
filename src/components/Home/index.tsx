@@ -16,7 +16,6 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import SadgeEmote from '../../images/Sadge.png'
 
 function Home() {
-  const dev = false
   setInterval(() => {
     window.location.reload()
   }, 300000) // 5 mins
@@ -40,6 +39,14 @@ function Home() {
   const [totalResults, setTotalResults] = useState<number>(1)
   const [actualPage, setActualPage] = useState<number>(1)
 
+  // VR Chat only
+  const [vrcStreamsOnly, setvrcStreamsOnly] = useState<boolean>(
+    localStorage.getItem('vrcStreamsOnly') !== null
+      ? Boolean(localStorage.getItem('vrcStreamsOnly'))
+      : false,
+  )
+
+  const dev = false
   useEffect(() => {
     fetch(
       dev // http://localhost:8000/streams?page=${actualPage}&limit=12&status=${sortStatus}&sort=${sortList}
@@ -178,6 +185,23 @@ function Home() {
               </ToggleButton>
             </ToggleButtonGroup>
           </Stack>
+
+          <Stack
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="flex-end"
+          >
+            <Button
+              variant={vrcStreamsOnly ? 'contained' : 'outlined'}
+              onClick={() => {
+                const newV = !vrcStreamsOnly
+                setvrcStreamsOnly(newV)
+                localStorage.setItem('vrcStreamsOnly', newV.toString())
+              }}
+            >
+              VRChat only
+            </Button>
+          </Stack>
         </Stack>
 
         <div className="cards">
@@ -198,7 +222,13 @@ function Home() {
             </Stack>
           ) : (
             streams?.map((item, ind) => (
-              <>{item ? StreamerCard(item, loaded, ind) : <p>Loading</p>}</>
+              <>
+                {item ? (
+                  StreamerCard(item, loaded, ind, vrcStreamsOnly)
+                ) : (
+                  <p>Loading</p>
+                )}
+              </>
             ))
           )}
         </div>

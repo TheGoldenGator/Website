@@ -4,8 +4,12 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Chip,
   Fade,
+  IconButton,
   Skeleton,
+  Stack,
+  Tooltip,
   Typography,
 } from '@mui/material'
 import '../../styles/index.css'
@@ -59,8 +63,8 @@ export const StreamerCard = (
   }: StreamerProps,
   loaded: boolean,
   ind: number,
+  vrcStreamsOnly: boolean,
 ) => {
-  console.log('Test')
   const parseDate = (date: string) => {
     const now = new Date().getTime()
     const parse = new Date(date).getTime()
@@ -72,6 +76,37 @@ export const StreamerCard = (
     return `${(hours < 10 ? '0' : '') + hours}:${
       (minutes < 10 ? '0' : '') + minutes
     }`
+  }
+
+  // Displays streams that are only in VRChat
+  if (vrcStreamsOnly && stream_game_name !== 'VRChat') return
+
+  const addStreamToMultiview = () => {
+    const currentStreams = JSON.parse(localStorage.getItem('multiview')!)
+
+    // Removes streamer to multiview selection
+    if (currentStreams.includes(user_login)) {
+      const ind = currentStreams.indexOf(user_login)
+      currentStreams.splice(ind, 1)
+      localStorage.setItem('multiview', JSON.stringify(currentStreams))
+    } else {
+      // Adds streamer to multiview selection
+      const curr = JSON.parse(localStorage.getItem('multiview')!)
+      curr.push(user_login)
+      localStorage.setItem('multiview', JSON.stringify(curr))
+    }
+  }
+
+  const inMultiviewSelection = () => {
+    const currentStreams = JSON.parse(localStorage.getItem('multiview')!);
+
+    if (currentStreams.includes(user_login)) {
+      console.log('should be on')
+      return true
+    } else {
+      console.log('should be off')
+      return false
+    }
   }
 
   const loading = false
@@ -126,7 +161,7 @@ export const StreamerCard = (
               <></>
             )}
           </div>
-          <CardContent sx={{padding: '8px'}}>
+          <CardContent sx={{ padding: '8px' }}>
             <Typography variant="body1" color="text.secondary">
               {loading ? (
                 <Skeleton variant="text" />
@@ -144,7 +179,7 @@ export const StreamerCard = (
                   <img className="pfp" alt="" src={user_profile_image_url} />
                 )}
                 <span className="username">
-                  {loading ? <Skeleton variant="text" /> : user_display_name}
+                  {loading ? <Skeleton variant="text" /> : (user_login === "aikasanvr") ? <>{user_display_name}<br />{user_login}</> : user_display_name}
                 </span>
                 <span className="game-name">
                   {loading ? (
@@ -156,16 +191,36 @@ export const StreamerCard = (
               </div>
             </Typography>
           </CardContent>
-          <CardActions sx={{padding: '0px 8px 8px 8px'}}>
-            <Socials
-              discord={discord}
-              instagram={instagram}
-              reddit={reddit}
-              tiktok={tiktok}
-              twitter={twitter}
-              vrchat_legends={vrchat_legends}
-              youtube={youtube}
-            />
+          <CardActions sx={{ padding: '0px 8px 8px 8px' }}>
+            <Tooltip title="Add to Multiview">
+              <IconButton
+                size="small"
+                color="primary"
+                sx={{ margin: '0 6px 0 6px' }}
+                onClick={addStreamToMultiview}
+              >
+                <svg
+                  className={(inMultiviewSelection) ? 'multiview-button' : 'multiview-button-selected'}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M18 13.496h-4.501v4.484h-3v-4.484H6v-2.99h4.5V6.021h3.001v4.485H18v2.99zM21 .041H3C1.348.043.008 1.379 0 3.031v17.94c.008 1.65 1.348 2.986 3 2.988h18c1.651-.002 2.991-1.338 3-2.988V3.031c-.009-1.652-1.348-2.987-3-2.99z" />
+                </svg>
+              </IconButton>
+            </Tooltip>
+
+            <Stack direction="row">
+              <Socials
+                discord={discord}
+                instagram={instagram}
+                reddit={reddit}
+                tiktok={tiktok}
+                twitter={twitter}
+                vrchat_legends={vrchat_legends}
+                youtube={youtube}
+              />
+            </Stack>
           </CardActions>
         </Card>
       </div>

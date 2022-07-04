@@ -53,6 +53,12 @@ const Header = () => {
                   to="/about"
                   component={Link}
                 />
+                <Tab
+                  label="Tools"
+                  value="/tools"
+                  to="/tools"
+                  component={Link}
+                />
               </Tabs>
             </>
           )}

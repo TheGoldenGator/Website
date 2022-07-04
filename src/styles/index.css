@@ -119,7 +119,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: all 0.20s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .stream-card:hover .title {
@@ -134,7 +134,7 @@
   float: left;
   align-items: center;
   display: flex;
-  border: 2px solid #9146FF;
+  border: 2px solid #9146ff;
   border-style: soild;
   border-color: #bf94ff;
 }
@@ -228,6 +228,28 @@
 
 .member-social-media-icon:hover {
   fill: #e2c286;
+}
+
+.multiview-button {
+  height: 23px;
+  width: 23px;
+  fill: rgb(119, 119, 119);
+  transition: all 0.19s ease-in-out;
+}
+
+.multiview-button:hover {
+  fill: #e2c286;
+}
+
+.multiview-button-selected {
+  height: 23px;
+  width: 23px;
+  fill: #e2c286;
+  transition: all 0.19s ease-in-out;
+}
+
+.multiview-button-selected:hover {
+  fill: rgb(119, 119, 119);
 }
 
 .about-social-media-icon {
