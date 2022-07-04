@@ -57,7 +57,7 @@ function Home() {
         setTotalResults(json.pagination.results)
       })
     setLoaded(true)
-  }, [actualPage, dev, sortList, sortStatus])
+  }, [actualPage, dev, limit, sortList, sortStatus])
 
   const handleStatusSort = (
     event: React.MouseEvent<HTMLElement>,
