@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import '../../styles/index.css'
 import Socials from '../Members/Socials'
+import ReactGA from 'react-ga';
 
 export type StreamerProps = {
   status: 'offline' | 'online'
@@ -83,7 +84,13 @@ export const StreamerCard = (
     >
       <div className="stream-card">
         <Card sx={{ maxWidth: 400 }}>
-          <div className="thumbnail">
+          <div className="thumbnail" onClick={() => {
+            ReactGA.event({
+              category: 'Click',
+              action: "Clicked stream",
+              label: user_login
+            });
+          }}>
             <a
               target="_blank"
               rel="noopener noreferrer"
