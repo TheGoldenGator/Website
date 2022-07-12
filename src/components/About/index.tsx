@@ -10,6 +10,7 @@ import {
 
 function About() {
   document.title = 'GoldenGator | About'
+  
   return (
     <Container sx={{ align: 'center', justifyContent: 'center' }}>
       <Stack

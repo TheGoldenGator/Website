@@ -5,8 +5,14 @@ import About from './About'
 import NavBar from './NavBar'
 import { createTheme, ThemeProvider } from '@mui/material'
 import Members from './Members'
+import { useEffect } from 'react'
+import ReactGA from 'react-ga';
 
 function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
