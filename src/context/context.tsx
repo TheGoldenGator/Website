@@ -2,7 +2,7 @@ import { enqueueSnackbar } from 'notistack'
 import { createContext, useContext, useEffect, useReducer } from 'react'
 import { getStreams } from '../utils/requests/getStreams'
 import { getSettings, initSettings } from '../utils/settings'
-import { sseEvents } from '../utils/sse'
+
 import {
   GET_STREAMS,
   STREAM_OFFLINE,
@@ -25,6 +25,12 @@ const AppProvider = (props: any) => {
   const [appState, appDispatch] = useReducer(appReducer, initialState)
 
   useEffect(() => {
+    const sseEvents = new EventSource(
+      'http://localhost:8080/sse?stream=events',
+      {
+        withCredentials: false,
+      },
+    )
     // Initialize settings if it doesn't exist
     initSettings()
 
@@ -99,8 +105,8 @@ const AppProvider = (props: any) => {
       }
     }
 
-    sseEvents.onerror = () => {
-      sseEvents.close()
+    sseEvents.onerror = (e) => {
+      console.log(e)
     }
 
     return () => {

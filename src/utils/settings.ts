@@ -10,6 +10,7 @@ export const initSettings = () => {
       alerts_stream_title_change: false,
       live_updates_enabled: true,
       twitch_color_names: true,
+      viewer_sort: 'descending',
     }
 
     localStorage.setItem('settings', JSON.stringify(settings))
@@ -27,13 +28,14 @@ export const getSettings = () => {
       alerts_stream_title_change: false,
       live_updates_enabled: true,
       twitch_color_names: true,
+      viewer_sort: 'descending',
     } as Settings
   }
 
   return JSON.parse(settings) as Settings
 }
 
-export const setSetting = (setting: string, value: boolean) => {
+export const setSetting = (setting: string, value: any) => {
   const settings = getSettings()
   if (settings !== null) {
     let data: any = settings

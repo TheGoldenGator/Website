@@ -48,7 +48,7 @@ export const appReducer = (state: any, action: any) => {
 
     return {
       ...state,
-      streams: newStreams,
+      streams: sortByViewcount('descending', newStreams),
     }
   } else if (action.type === CHANNEL_UPDATE) {
     const settings = getSettings()

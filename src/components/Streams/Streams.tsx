@@ -16,6 +16,7 @@ import { useAppContext } from '../../context/context'
 import { sortByViewcount } from '../../utils/utils'
 import StreamCard from './Card'
 import SearchIcon from '@mui/icons-material/Search'
+import { getSettings, setSetting } from '../../utils/settings'
 
 const Streams = () => {
   const {
@@ -23,7 +24,7 @@ const Streams = () => {
   } = useAppContext()
 
   const [viewerSort, setViewerSort] = useState<'ascending' | 'descending'>(
-    'descending',
+    getSettings().viewer_sort || 'descending',
   )
   // Keeps track for searching usernames/display names and by game.
   const [search, setSearch] = useState<string>('')
@@ -41,6 +42,7 @@ const Streams = () => {
     if (newViewerSort !== null) {
       if (newViewerSort === 'ascending' || newViewerSort === 'descending') {
         setViewerSort(newViewerSort)
+        setSetting('viewer_sort', newViewerSort)
       }
     }
   }
@@ -171,7 +173,7 @@ const Streams = () => {
             </Grid>
           </Grid>
         </Box>
-        <Box>
+        <Box sx={{ marginBottom: 2, marginTop: 2 }}>
           <Grid
             key={'streams-grid'}
             container
