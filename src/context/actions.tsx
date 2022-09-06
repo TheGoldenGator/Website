@@ -1,0 +1,5 @@
+export const GET_STREAMS = "GET_STREAMS"
+export const STREAM_ONLINE = 'STREAM_ONLINE'
+export const STREAM_OFFLINE = 'STREAM_OFFLINE'
+export const CHANNEL_UPDATE = 'CHANNEL_UPDATE'
+export const VIEWERS = 'VIEWERS'

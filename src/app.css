@@ -1,0 +1,70 @@
+.member-social-media-icon {
+  height: 28px;
+  width: 28px;
+  fill: rgb(119, 119, 119);
+  transition: all 0.19s ease-in-out;
+}
+
+.member-social-media-icon:hover {
+  fill: #b6995b;
+}
+
+.about-social-media-icon {
+  height: 64px;
+  width: 64px;
+  fill: rgb(119, 119, 119);
+  transition: all 0.19s ease-in-out;
+}
+
+.about-social-media-icon:hover {
+  fill: #b6995b;
+}
+
+.uptime {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  top: 4px;
+  right: 4px;
+  padding: 3px 3px 3px 3px;
+  border-radius: 3px;
+  background-color: rgba(19, 19, 19, 0.6);
+  color: white;
+}
+
+.thumbnail-live {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  margin: 0;
+  padding: 2px 2px 2px 2px;
+  border-radius: 4px;
+  background-color: #eb0400;
+  color: white;
+}
+
+.viewer-count {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  margin: 0;
+  padding: 3px 3px 3px 3px;
+  border-radius: 3px;
+  background-color: rgba(19, 19, 19, 0.6);
+  color: white;
+}
+
+.thumbnail {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.thumbnail-image {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
