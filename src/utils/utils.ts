@@ -7,7 +7,7 @@ export const sqlUrl = !inProduction
   : 'https://api.thegoldengator.tv/query'
 export const baseUrl = !inProduction
   ? 'http://localhost:8000'
-  : 'https://thegoldengator.tv'
+  : 'https://api.thegoldengator.tv'
 
 // Get the decimal separator that is used by the browser
 export const whatDecimalSeparator = () => {
