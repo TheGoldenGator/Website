@@ -30,7 +30,8 @@ const App = () => {
         Components={{
           reportComplete: ReportComplete,
         }}
-        maxSnack={5}
+        dense
+        maxSnack={10}
       >
         <AppProvider>
           <ThemeProvider theme={theme}>

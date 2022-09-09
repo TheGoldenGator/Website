@@ -1,13 +1,9 @@
-import { Avatar, Box, Pagination, Skeleton, Typography } from '@mui/material'
+import { Avatar, Box, Skeleton, Typography } from '@mui/material'
 import {
   GridColDef,
   DataGrid,
   GridRenderCellParams,
   GridToolbarQuickFilter,
-  useGridApiContext,
-  gridPageCountSelector,
-  gridPageSelector,
-  useGridSelector,
 } from '@mui/x-data-grid'
 import { useState } from 'react'
 import { Loading } from '../Loading'
@@ -47,7 +43,7 @@ const HandlePfpRow = (props: GridRenderCellParams, loading: boolean) => {
 
 const HandleSocialLinksRow = (props: GridRenderCellParams) => {
   let { value } = props
-  return <SocialLinks links={value} />
+  return <SocialLinks links={value} login={null} />
 }
 
 const HandleNameRow = (props: GridRenderCellParams) => {
@@ -58,21 +54,6 @@ const HandleNameRow = (props: GridRenderCellParams) => {
 type ViewTableProps = {
   members: MemberGQLRequest | null
   loading: boolean
-}
-
-const TablePagination = () => {
-  const apiRef = useGridApiContext()
-  const page = useGridSelector(apiRef, gridPageSelector)
-  const pageCount = useGridSelector(apiRef, gridPageCountSelector)
-
-  return (
-    <Pagination
-      color="primary"
-      count={pageCount}
-      page={page + 1}
-      onChange={(event, value) => apiRef.current.setPage(value - 1)}
-    />
-  )
 }
 
 const ViewTable = ({ members, loading }: ViewTableProps) => {
@@ -150,7 +131,6 @@ const ViewTable = ({ members, loading }: ViewTableProps) => {
         components={{
           LoadingOverlay: Loading,
           Toolbar: QuickSearchToolbar,
-          Pagination: TablePagination,
         }}
       />
     </Box>

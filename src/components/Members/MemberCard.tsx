@@ -38,7 +38,7 @@ const MemberCard = ({ edge }: MemberCardProps) => {
           <Typography variant="body1">{edge.node.login}</Typography>
         </CardContent>
         <CardActions sx={{ padding: '0px 8px 8px 8px' }}>
-          <SocialLinks links={edge.node.links} />
+          <SocialLinks links={edge.node.links} login={edge.node.login} />
         </CardActions>
       </Card>
     </Grid>

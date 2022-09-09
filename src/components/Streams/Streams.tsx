@@ -7,84 +7,82 @@ import {
   InputAdornment,
   Snackbar,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-} from '@mui/material'
-import { Stack } from '@mui/system'
-import React, { useState } from 'react'
-import { useAppContext } from '../../context/context'
-import { sortByViewcount } from '../../utils/utils'
-import StreamCard from './Card'
-import SearchIcon from '@mui/icons-material/Search'
-import { getSettings, setSetting } from '../../utils/settings'
+  Typography,
+} from "@mui/material";
+import { Stack } from "@mui/system";
+import React, { useState } from "react";
+import { useAppContext } from "../../context/context";
+import { sortByViewcount } from "../../utils/utils";
+import StreamCard from "./Card";
+import SearchIcon from "@mui/icons-material/Search";
+import { getSettings, setSetting } from "../../utils/settings";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import { useEffect } from "react";
+import ReactGA from "react-ga";
 
 const Streams = () => {
+  useEffect(() => {
+    document.title = "Golden Gator | Streams";
+    ReactGA.pageview("streams");
+  });
+
   const {
     appState: { streams },
-  } = useAppContext()
+  } = useAppContext();
 
-  const [viewerSort, setViewerSort] = useState<'ascending' | 'descending'>(
-    getSettings().viewer_sort || 'descending',
-  )
+  const settings = getSettings();
+
+  const [viewerSort, setViewerSort] = useState<"ascending" | "descending">(
+    settings.viewer_sort || "descending"
+  );
   // Keeps track for searching usernames/display names and by game.
-  const [search, setSearch] = useState<string>('')
-  const [multiStreams, setMultiStreams] = useState<string[]>([])
-  const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false)
+  const [search, setSearch] = useState<string>("");
+  const [multiStreams, setMultiStreams] = useState<string[]>([]);
+  const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value)
-  }
-
-  const handleAlignment = (
-    event: React.MouseEvent<HTMLElement>,
-    newViewerSort: string | null,
-  ) => {
-    if (newViewerSort !== null) {
-      if (newViewerSort === 'ascending' || newViewerSort === 'descending') {
-        setViewerSort(newViewerSort)
-        setSetting('viewer_sort', newViewerSort)
-      }
-    }
-  }
+    setSearch(event.target.value);
+  };
 
   const handleMultiStreamClick = (login: string) => {
     if (multiStreams.includes(login)) {
       // Remove it from multi-streams
-      setMultiStreams(multiStreams.filter((name) => name !== login))
+      setMultiStreams(multiStreams.filter((name) => name !== login));
     } else {
       // Add it to multi-streams
-      setMultiStreams([...multiStreams, login])
+      setMultiStreams([...multiStreams, login]);
     }
-  }
+  };
 
   const clearMultiStream = () => {
-    setMultiStreams([])
-  }
+    setMultiStreams([]);
+  };
 
   const handleSnackbarClose = (
     event?: React.SyntheticEvent | Event,
-    reason?: string,
+    reason?: string
   ) => {
-    if (reason === 'clickaway') {
-      return
+    if (reason === "clickaway") {
+      return;
     }
 
-    setSnackbarOpen(false)
-  }
+    setSnackbarOpen(false);
+  };
 
   const handleSearch = (streams: Stream[]) => {
     return streams.filter((s) => {
-      const gameMatches = s.game.toLowerCase().includes(search.toLowerCase())
+      const gameMatches = s.game.toLowerCase().includes(search.toLowerCase());
       const nameMatches = s.member.login
         .toLowerCase()
-        .includes(search.toLowerCase())
+        .includes(search.toLowerCase());
       const displayNameMatches = s.member.display_name
         .toLowerCase()
-        .includes(search.toLowerCase())
+        .includes(search.toLowerCase());
 
-      return gameMatches || nameMatches || displayNameMatches
-    })
-  }
+      return gameMatches || nameMatches || displayNameMatches;
+    });
+  };
 
   return (
     <Container maxWidth={false}>
@@ -96,20 +94,20 @@ const Streams = () => {
         <Alert
           onClose={handleSnackbarClose}
           severity="success"
-          sx={{ width: '100%' }}
+          sx={{ width: "100%" }}
         >
           Copied multistream link to clipboard!
         </Alert>
       </Snackbar>
       <Stack direction="column" spacing={1}>
-        <Box>
+        <Box sx={{ marginBottom: 2 }}>
           <Grid container alignItems="center">
             <Grid>
               <Stack direction="row" spacing={1}>
                 <Box
                   sx={{
                     width: 300,
-                    maxWidth: '100%',
+                    maxWidth: "100%",
                   }}
                 >
                   <TextField
@@ -129,56 +127,113 @@ const Streams = () => {
                   />
                 </Box>
 
-                <ToggleButtonGroup
+                <Stack direction="column" spacing={1}>
+                  <Box>
+                    <Typography> </Typography>
+                  </Box>
+                  <Stack direction="row" spacing={1}>
+                    <Box>
+                      <Button
+                        onClick={() => {
+                          setViewerSort(
+                            viewerSort === "descending"
+                              ? "ascending"
+                              : "descending"
+                          );
+                          setSetting(
+                            "viewer_sort",
+                            viewerSort === "descending"
+                              ? "ascending"
+                              : "descending"
+                          );
+                        }}
+                        variant={"contained"}
+                      >
+                        {viewerSort === "descending" ? (
+                          <ArrowUpwardIcon />
+                        ) : (
+                          <ArrowDownwardIcon />
+                        )}
+                        Viewers
+                      </Button>
+                    </Box>
+
+                    {/* <Box>
+                      <Button
+                        onClick={() => {
+                          setViewerSort('ascending')
+                          setSetting('viewer_sort', 'ascending')
+                        }}
+                        variant={
+                          viewerSort === 'ascending' ? 'contained' : 'outlined'
+                        }
+                      >
+                        <ArrowDownwardIcon />
+                        Viewers
+                      </Button>
+                    </Box> */}
+                  </Stack>
+                </Stack>
+
+                {/* <ToggleButtonGroup
                   value={viewerSort}
                   exclusive
                   onChange={handleAlignment}
                   aria-label="viewer sort"
                 >
                   <ToggleButton value="descending" aria-label="viewers up">
-                    Descending
+                    <ArrowDownwardIcon />
+                    Viewers
                   </ToggleButton>
                   <ToggleButton value="ascending" aria-label="viewers down">
-                    Ascending
+                    <ArrowUpwardIcon />
+                    Viewers
                   </ToggleButton>
-                </ToggleButtonGroup>
+                </ToggleButtonGroup> */}
               </Stack>
             </Grid>
-            <Grid sx={{ marginLeft: 'auto' }}>
+            <Grid sx={{ marginLeft: "auto" }}>
               {/* Multi-stream */}
-              <Stack direction="row" spacing={1}>
-                <Button
-                  variant="contained"
-                  disabled={multiStreams.length === 0 ? true : false}
-                  onClick={() => {
-                    navigator.clipboard.writeText(
-                      `https://www.multitwitch.tv/${multiStreams
-                        .join('/')
-                        .toLowerCase()}`,
-                    )
+              <Stack direction="column" spacing={1}>
+                <Box>
+                  <Typography> </Typography>
+                </Box>
 
-                    setSnackbarOpen(true)
-                  }}
-                >
-                  Create Multi-Stream Link
-                </Button>
-                <Button
-                  variant="contained"
-                  disabled={multiStreams.length === 0 ? true : false}
-                  onClick={clearMultiStream}
-                >
-                  Clear Selection
-                </Button>
+                <Stack direction="row" spacing={1}>
+                  <Button
+                    variant="contained"
+                    disabled={multiStreams.length === 0 ? true : false}
+                    onClick={() => {
+                      navigator.clipboard.writeText(
+                        `https://www.multitwitch.tv/${multiStreams
+                          .join("/")
+                          .toLowerCase()}`
+                      );
+
+                      setSnackbarOpen(true);
+                    }}
+                  >
+                    Create Multi-Stream Link
+                  </Button>
+                  <Button
+                    variant="contained"
+                    disabled={multiStreams.length === 0 ? true : false}
+                    onClick={clearMultiStream}
+                  >
+                    Clear Selection
+                  </Button>
+                </Stack>
               </Stack>
             </Grid>
           </Grid>
         </Box>
-        <Box sx={{ marginBottom: 2, marginTop: 2 }}>
+        <Box>
           <Grid
-            key={'streams-grid'}
+            key={"streams-grid"}
             container
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
+            sx={{ marginBottom: 2 }}
           >
             {handleSearch(sortByViewcount(viewerSort, streams)).map(
               (stream: Stream | null, ind: number) => (
@@ -188,14 +243,15 @@ const Streams = () => {
                   stream={stream}
                   multiStreams={multiStreams}
                   handleMultiStreamClick={handleMultiStreamClick}
+                  settings={settings}
                 />
-              ),
+              )
             )}
           </Grid>
         </Box>
       </Stack>
     </Container>
-  )
-}
+  );
+};
 
-export default Streams
+export default Streams;

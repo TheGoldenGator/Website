@@ -1,2 +1,2 @@
 import './index.css'
-import './components/App';
+import './components/App'

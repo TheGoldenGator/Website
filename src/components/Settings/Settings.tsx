@@ -1,4 +1,6 @@
 import {
+  Box,
+  Button,
   DialogActions,
   DialogContent,
   DialogContentText,
@@ -13,6 +15,7 @@ import {
 import { Container } from '@mui/system'
 import { getSettings, setSetting } from '../../utils/settings'
 import { useEffect, useState } from 'react'
+import ReactGA from 'react-ga'
 
 const Settings = () => {
   const [settings, setSettings] = useState<Settings>(
@@ -20,6 +23,9 @@ const Settings = () => {
   )
 
   useEffect(() => {
+    document.title = 'Golden Gator | Settings'
+    ReactGA.pageview('settings')
+
     let settings = getSettings()
     setSettings(settings)
   }, [])
@@ -30,9 +36,11 @@ const Settings = () => {
 
   return (
     <Container>
-      <DialogTitle variant="h4" sx={{ fontWeight: 'bold' }}>
-        Settings
-      </DialogTitle>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <DialogTitle variant="h4" sx={{ fontWeight: 'bold' }}>
+          Settings
+        </DialogTitle>
+      </Box>
 
       <Divider />
 

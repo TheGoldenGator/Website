@@ -1,24 +1,31 @@
-import { Box, IconButton, Link, Stack, Typography } from '@mui/material'
-import '../../app.css'
+import { Box, IconButton, Link, Stack, Typography } from "@mui/material";
+import "../../app.css";
+import { useEffect } from "react";
+import ReactGA from "react-ga";
 
 const About = () => {
+  useEffect(() => {
+    document.title = "Golden Gator | About";
+    ReactGA.pageview("about");
+  });
+
   return (
-    <Box sx={{ align: 'center', justifyContent: 'center' }}>
+    <Box sx={{ align: "center", justifyContent: "center" }}>
       <Stack
         direction="column"
         justifyContent="center"
         alignItems="center"
         spacing={2}
-        sx={{ color: 'white', marginTop: 9 }}
+        sx={{ color: "white", marginTop: 9 }}
       >
         <Typography variant="h4">About</Typography>
-        <Typography sx={{ width: '45%' }}>
+        <Typography sx={{ width: "45%" }}>
           This site actively keeps up with The Golden Gator crew on Twitch. This
           site is still being worked on. I made it just as a side project, and
           wanted to give back to the crew. :)
         </Typography>
 
-        <Typography sx={{ fontStyle: 'italic', width: '45%' }}>
+        <Typography sx={{ fontStyle: "italic", width: "45%" }}>
           Am I missing data, streams, or have any ideas? Feel free to reach out
           below!
         </Typography>
@@ -33,7 +40,7 @@ const About = () => {
               className="about-social-media-icon"
               size="small"
               color="primary"
-              sx={{ margin: '0 6px 0 6px' }}
+              sx={{ margin: "0 6px 0 6px" }}
             >
               <svg
                 role="img"
@@ -54,7 +61,7 @@ const About = () => {
               className="about-social-media-icon"
               size="small"
               color="primary"
-              sx={{ margin: '0 6px 0 6px' }}
+              sx={{ margin: "0 6px 0 6px" }}
             >
               <svg
                 role="img"
@@ -75,7 +82,7 @@ const About = () => {
               className="about-social-media-icon"
               size="small"
               color="primary"
-              sx={{ margin: '0 6px 0 6px' }}
+              sx={{ margin: "0 6px 0 6px" }}
             >
               <svg
                 role="img"
@@ -88,12 +95,12 @@ const About = () => {
             </IconButton>
           </Link>
         </Stack>
-        <Typography sx={{ color: 'rgb(119, 119, 119)', fontWeight: 'bold' }}>
+        <Typography sx={{ color: "rgb(119, 119, 119)", fontWeight: "bold" }}>
           Mahcks#0001 on Discord
         </Typography>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default About
+export default About;

@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import '../index.css'
 import vincentSpin from '../assets/loading/vincentSpin.gif'
 import racJAM from '../assets/loading/racJAM.webp'
+import crumpWobble from '../assets/loading/crumpWobble.gif'
+import roflgatorSmile from '../assets/loading/roflgatorSmile.png'
 
 const Dots = styled.span`
   &::after {
@@ -37,6 +39,14 @@ const Messages = [
   {
     img: vincentSpin,
     text: 'Spinning',
+  },
+  {
+    img: crumpWobble,
+    text: 'Wobbling',
+  },
+  {
+    img: roflgatorSmile,
+    text: 'Smiling',
   },
 ]
 

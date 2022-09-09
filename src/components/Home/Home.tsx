@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material'
-import { Stack } from '@mui/system'
+import { Box, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
         </Stack>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -21,5 +21,8 @@ const query = gql`
 `
 
 export const getMember = (search: string) => {
-  return request('http://localhost:8080/query', query.replace('$search', `"${search}"`))
+  return request(
+    'http://localhost:8080/query',
+    query.replace('$search', `"${search}"`),
+  )
 }
