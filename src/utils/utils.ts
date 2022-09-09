@@ -1,5 +1,5 @@
 // Determines the envrionment the site should run in
-export const inProduction: boolean = true
+export const inProduction: boolean = false
 
 // URls project uses.
 export const sqlUrl = !inProduction

@@ -41,6 +41,11 @@ const AppProvider = (props: any) => {
     getInitialStreams()
 
     sseEvents.onmessage = (e) => {
+      if (typeof e.data === 'string') {
+        console.log('[SSE] Pong!')
+        return 
+      }
+      
       const data = JSON.parse(e.data)
       switch (data.event) {
         case 'stream.online':
