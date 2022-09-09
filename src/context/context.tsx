@@ -1,8 +1,8 @@
 import { enqueueSnackbar } from 'notistack'
 import { createContext, useContext, useEffect, useReducer } from 'react'
 import { getStreams } from '../utils/requests/getStreams'
-import { sseEvents } from '../utils/see'
-import { getSettings, initSettings } from '../utils/settings'
+import { initSSE, sseEvents } from '../utils/see'
+import { getSettings, initSettings, setSetting } from '../utils/settings'
 
 import {
   GET_STREAMS,
@@ -100,12 +100,18 @@ const AppProvider = (props: any) => {
       }
     }
 
+    sseEvents.onopen = (e) => {
+      setSetting('is_connected', true)
+    }
+
     sseEvents.onerror = (e) => {
-      console.log(e)
+      setSetting('is_connected', false)
     }
 
     return () => {
       sseEvents.close()
+      setSetting('is_connected', false)
+      initSSE()
     }
   }, [
     settings.alerts_enabled,

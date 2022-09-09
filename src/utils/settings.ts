@@ -11,6 +11,7 @@ export const initSettings = () => {
       live_updates_enabled: true,
       twitch_color_names: true,
       viewer_sort: 'descending',
+      is_connected: false,
     }
 
     localStorage.setItem('settings', JSON.stringify(settings))
@@ -29,6 +30,7 @@ export const getSettings = () => {
       live_updates_enabled: true,
       twitch_color_names: true,
       viewer_sort: 'descending',
+      is_connected: false
     } as Settings
   }
 

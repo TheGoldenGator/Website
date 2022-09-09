@@ -1,4 +1,5 @@
 import request, { gql } from 'graphql-request'
+import { sqlUrl } from '../utils'
 
 const query = gql`
   {
@@ -30,5 +31,5 @@ const query = gql`
 `
 
 export const getMembers = () => {
-  return request('http://localhost:8080/query', query)
+  return request(sqlUrl, query)
 }

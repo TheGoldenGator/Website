@@ -1,3 +1,14 @@
+// Determines the envrionment the site should run in
+export const inProduction: boolean = true
+
+// URls project uses.
+export const sqlUrl = !inProduction
+  ? 'http://localhost:8000/query'
+  : 'https://api.thegoldengator.tv/query'
+export const baseUrl = !inProduction
+  ? 'http://localhost:8000'
+  : 'https://thegoldengator.tv'
+
 // Get the decimal separator that is used by the browser
 export const whatDecimalSeparator = () => {
   let n: string | number = 1.1

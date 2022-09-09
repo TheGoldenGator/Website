@@ -125,6 +125,7 @@ type Settings = {
   alerts_stream_game_change: boolean
   twitch_color_names: boolean
   viewer_sort: 'descending' | 'ascending'
+  is_connected: boolean
 }
 
 type SettingCategories = 'updates' | 'alerts'
