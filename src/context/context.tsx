@@ -41,13 +41,12 @@ const AppProvider = (props: any) => {
     getInitialStreams()
 
     sseEvents.onmessage = (e) => {
-      if (typeof e.data === 'string') {
-        console.log('[SSE] Pong!')
-        return 
-      }
-
       const data = JSON.parse(e.data)
       switch (data.event) {
+        case 'ping':
+          console.log('[SSE] Pong!')
+          return
+
         case 'stream.online':
           const payload: SSEMessageEventDataStreamOnline = data.data
           const newStream: Stream = {
@@ -110,6 +109,7 @@ const AppProvider = (props: any) => {
     }
 
     sseEvents.onerror = (e) => {
+      sseEvents.close()
       setSetting('is_connected', false)
     }
 
