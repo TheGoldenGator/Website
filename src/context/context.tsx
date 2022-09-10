@@ -104,10 +104,6 @@ const AppProvider = (props: any) => {
       }
     }
 
-    sseEvents.onopen = (e) => {
-      setSetting('is_connected', true)
-    }
-
     sseEvents.onerror = (e) => {
       sseEvents.close()
       setSetting('is_connected', false)
