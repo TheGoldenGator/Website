@@ -1,7 +1,7 @@
 import { enqueueSnackbar } from 'notistack'
 import { createContext, useContext, useEffect, useReducer } from 'react'
 import { getStreams } from '../utils/requests/getStreams'
-import { initSSE, sseEvents } from '../utils/see'
+import { sseEvents } from '../utils/see'
 import { getSettings, initSettings, setSetting } from '../utils/settings'
 
 import {
@@ -45,7 +45,7 @@ const AppProvider = (props: any) => {
         console.log('[SSE] Pong!')
         return 
       }
-      
+
       const data = JSON.parse(e.data)
       switch (data.event) {
         case 'stream.online':
@@ -116,7 +116,6 @@ const AppProvider = (props: any) => {
     return () => {
       sseEvents.close()
       setSetting('is_connected', false)
-      initSSE()
     }
   }, [
     settings.alerts_enabled,
