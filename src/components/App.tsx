@@ -6,7 +6,6 @@ import Members from './Members/Members'
 import { ThemeProvider } from '@mui/system'
 import { theme } from '../theme'
 import { CssBaseline } from '@mui/material'
-import Member from './Members/Member'
 import About from './About/About'
 import { SnackbarProvider } from 'notistack'
 import ReportComplete from './AlertSnackbar'
@@ -44,7 +43,7 @@ const App = () => {
                   <Route path="/about" element={<About />} />
                   <Route path="/settings" element={<Settings />} />
                 </Route>
-                <Route path="/members/:memberId" element={<Member />} />
+                {/*  <Route path="/members/:memberId" element={<Member />} /> */}
               </Routes>
             </BrowserRouter>
           </ThemeProvider>

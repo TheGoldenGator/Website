@@ -67,7 +67,7 @@ const AppProvider = (props: any) => {
             enqueueSnackbar('', {
               variant: 'reportComplete',
               event: 'stream.online',
-              pfp: data.member!.pfp,
+              pfp: data.member!.pfp.replace('300x300', '70x70'),
               username: payload.broadcaster_user_name,
             })
             return
@@ -82,7 +82,7 @@ const AppProvider = (props: any) => {
             enqueueSnackbar('', {
               variant: 'reportComplete',
               event: 'stream.offline',
-              pfp: data.member!.pfp,
+              pfp: data.member!.pfp.replace('300x300', '70x70'),
               username: payloadOffline.broadcaster_user_name,
             })
             return

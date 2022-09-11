@@ -103,7 +103,7 @@ const Streams = () => {
         <Box sx={{ marginBottom: 2 }}>
           <Grid container alignItems="center">
             <Grid>
-              <Stack direction="row" spacing={1}>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
                 <Box
                   sx={{
                     width: 300,
@@ -231,8 +231,8 @@ const Streams = () => {
           <Grid
             key={'streams-grid'}
             container
-            spacing={{ xs: 2, md: 3 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
+            spacing={{ xs: 2, md: 4 }}
+            columns={{ xs: 4, sm: 4, md: 12, lg: 8 }}
             sx={{ marginBottom: 2 }}
           >
             {handleSearch(sortByViewcount(viewerSort, streams)).map(

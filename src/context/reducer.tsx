@@ -71,7 +71,7 @@ export const appReducer = (state: any, action: any) => {
         enqueueSnackbar(action.payload.category_name, {
           variant: 'reportComplete',
           event: 'game.update',
-          pfp: found.member.pfp,
+          pfp: found.member.pfp.replace('300x300', '70x70'),
           username: found.member.display_name,
         })
       }
@@ -84,7 +84,7 @@ export const appReducer = (state: any, action: any) => {
         enqueueSnackbar(action.payload.title, {
           variant: 'reportComplete',
           event: 'title.update',
-          pfp: found.member.pfp,
+          pfp: found.member.pfp.replace('300x300', '70x70'),
           username: found.member.display_name,
         })
       }

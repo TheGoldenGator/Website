@@ -70,7 +70,7 @@ const StreamCard = ({
       style={{ transformOrigin: "0 0 0" }}
       {...(true ? { timeout: Math.floor(index * 150) } : {})}
     >
-      <Grid item xs={4} sm={4} md={3} key={1}>
+      <Grid item xs={4} sm={4} md={6} lg={2} key={1}>
         <Card
           classes={{ root: state.raised ? classes.cardHovered : "" }}
           className={classes.root}
