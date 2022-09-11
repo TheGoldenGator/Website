@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions'
 import IconButton from '@mui/material/IconButton'
 import CloseIcon from '@mui/icons-material/Close'
 import { Stack } from '@mui/system'
-import { Grid } from '@mui/material'
+import { Avatar, Grid } from '@mui/material'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -126,9 +126,8 @@ const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
               <Grid>
                 <Grid container direction="row" alignItems="center" spacing={1}>
                   <Grid item>
-                    <img
-                      style={{ width: 42, height: 42, borderRadius: '50%' }}
-                      alt="pfp"
+                    <Avatar
+                      sx={{ width: 42, height: 42, borderRadius: '50%' }}
                       src={props.pfp}
                     />
                   </Grid>
