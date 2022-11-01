@@ -11,16 +11,7 @@ const query = gql`
           twitch_id
           color
           pfp
-          links {
-            twitch
-            reddit
-            instagram
-            twitter
-            discord
-            youtube
-            tiktok
-            vrchat_legends
-          }
+          links
         }
         status
         title

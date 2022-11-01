@@ -53,18 +53,7 @@ type Member = {
   display_name: string
   color: string
   pfp: string
-  links: MemberLink
-}
-
-type MemberLink = {
-  twitch: string
-  reddit: string
-  instagram: string
-  twitter: string
-  discord: string
-  youtube: string
-  tiktok: string
-  vrchat_legends: string
+  links: string[]
 }
 
 /* SSE */

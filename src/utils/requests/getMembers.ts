@@ -11,16 +11,7 @@ const query = gql`
         display_name
         color
         pfp
-        links {
-          twitch
-          reddit
-          instagram
-          twitter
-          discord
-          youtube
-          tiktok
-          vrchat_legends
-        }
+        links
       }
       page_info {
         page

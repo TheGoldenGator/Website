@@ -7,16 +7,7 @@ const query = gql`
       login
       display_name
       pfp
-      links {
-        twitch
-        reddit
-        instagram
-        twitter
-        discord
-        youtube
-        tiktok
-        vrchat_legends
-      }
+      links
     }
   }
 `
