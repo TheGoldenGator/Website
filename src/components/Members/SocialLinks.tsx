@@ -1,30 +1,57 @@
-import { IconButton, Link, Tooltip } from '@mui/material'
-import '../../app.css'
-import ReactGA from 'react-ga'
+import { IconButton, Link, Tooltip } from "@mui/material";
+import "../../app.css";
+import ReactGA from "react-ga";
 
 type SocialLinkProps = {
-  login: string | null
-  links: string[]
-}
+  login: string | null;
+  links: string[];
+};
 
 type LinkAndIcon = {
-  title: string
-  url: string
-  icon: JSX.Element
-}
+  title: string;
+  url: string;
+  icon: JSX.Element;
+};
 
 const icons: LinkAndIcon[] = [
   {
-    title: 'Discord',
-    url: 'discord.com',
+    title: "Twitch",
+    url: "twitch.com",
     icon: (
       <IconButton
         size="small"
         sx={{
-          margin: '0 6px 0 6px',
+          margin: "0 6px 0 6px",
           width: 42,
           height: 42,
-          color: '#b6995b',
+          color: "#b6995b",
+        }}
+      >
+        <svg
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          width="42"
+          height="42"
+          className="member-social-media-icon"
+          viewBox="0 0 15 15"
+        >
+          <path d="M3.857 0 1 2.857v10.286h3.429V16l2.857-2.857H9.57L14.714 8V0H3.857zm9.714 7.429-2.285 2.285H9l-2 2v-2H4.429V1.143h9.142v6.286z" />
+          <path d="M11.857 3.143h-1.143V6.57h1.143V3.143zm-3.143 0H7.571V6.57h1.143V3.143z" />
+        </svg>
+      </IconButton>
+    ),
+  },
+  {
+    title: "Discord",
+    url: "discord.com",
+    icon: (
+      <IconButton
+        size="small"
+        sx={{
+          margin: "0 6px 0 6px",
+          width: 42,
+          height: 42,
+          color: "#b6995b",
         }}
       >
         <svg
@@ -39,13 +66,13 @@ const icons: LinkAndIcon[] = [
     ),
   },
   {
-    title: 'Instagram',
-    url: 'instagram.com',
+    title: "Instagram",
+    url: "instagram.com",
     icon: (
       <IconButton
         size="small"
         color="primary"
-        sx={{ margin: '0 6px 0 6px', width: 42, height: 42 }}
+        sx={{ margin: "0 6px 0 6px", width: 42, height: 42 }}
       >
         <svg
           className="member-social-media-icon"
@@ -59,13 +86,13 @@ const icons: LinkAndIcon[] = [
     ),
   },
   {
-    title: 'Reddit',
-    url: 'reddit.com',
+    title: "Reddit",
+    url: "reddit.com",
     icon: (
       <IconButton
         size="small"
         color="primary"
-        sx={{ margin: '0 6px 0 6px', width: 42, height: 42 }}
+        sx={{ margin: "0 6px 0 6px", width: 42, height: 42 }}
       >
         <svg
           className="member-social-media-icon"
@@ -79,13 +106,13 @@ const icons: LinkAndIcon[] = [
     ),
   },
   {
-    title: 'TikTok',
-    url: 'tiktok.com',
+    title: "TikTok",
+    url: "tiktok.com",
     icon: (
       <IconButton
         size="small"
         color="primary"
-        sx={{ margin: '0 6px 0 6px', width: 42, height: 42 }}
+        sx={{ margin: "0 6px 0 6px", width: 42, height: 42 }}
       >
         <svg
           className="member-social-media-icon"
@@ -99,13 +126,13 @@ const icons: LinkAndIcon[] = [
     ),
   },
   {
-    title: 'Twitter',
-    url: 'twitter.com',
+    title: "Twitter",
+    url: "twitter.com",
     icon: (
       <IconButton
         size="small"
         color="primary"
-        sx={{ margin: '0 6px 0 6px', width: 42, height: 42 }}
+        sx={{ margin: "0 6px 0 6px", width: 42, height: 42 }}
       >
         <svg
           className="member-social-media-icon"
@@ -119,13 +146,13 @@ const icons: LinkAndIcon[] = [
     ),
   },
   {
-    title: 'YouTube',
-    url: 'youtube.com',
+    title: "YouTube",
+    url: "youtube.com",
     icon: (
       <IconButton
         size="small"
         color="primary"
-        sx={{ margin: '0 6px 0 6px', width: 42, height: 42 }}
+        sx={{ margin: "0 6px 0 6px", width: 42, height: 42 }}
       >
         <svg
           className="member-social-media-icon"
@@ -139,13 +166,13 @@ const icons: LinkAndIcon[] = [
     ),
   },
   {
-    title: 'VRChat-Legends',
-    url: 'vrchat-legends',
+    title: "VRChat-Legends",
+    url: "vrchat-legends",
     icon: (
       <IconButton
         size="small"
         color="info"
-        sx={{ margin: '0 4px 0 2px', width: 42, height: 42 }}
+        sx={{ margin: "0 4px 0 2px", width: 42, height: 42 }}
       >
         <svg
           className="member-social-media-icon"
@@ -158,23 +185,23 @@ const icons: LinkAndIcon[] = [
       </IconButton>
     ),
   },
-]
+];
 
 const SocialLinks = ({ login, links }: SocialLinkProps) => {
-  const parsedLinks: LinkAndIcon[] = []
+  const parsedLinks: LinkAndIcon[] = [];
 
   links.forEach((link) => {
     icons.forEach((icon) => {
       if (link.includes(icon.title.toLowerCase())) {
-        let newIcon = icon
-        newIcon.url = link
-        parsedLinks.push(newIcon)
+        let newIcon = icon;
+        newIcon.url = link;
+        parsedLinks.push(newIcon);
       }
-    })
-  })
-  
+    });
+  });
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
       {parsedLinks.map((link) => (
         <Link
           href={link.url}
@@ -182,19 +209,19 @@ const SocialLinks = ({ login, links }: SocialLinkProps) => {
           rel="noopener noreferrer"
           onClick={() => {
             ReactGA.event({
-              category: 'Click',
+              category: "Click",
               action:
                 login !== null
                   ? `Clicked ${link.title} link for ${login}`
                   : link.url,
-            })
+            });
           }}
         >
           <Tooltip title={link.title}>{link.icon}</Tooltip>
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default SocialLinks
+export default SocialLinks;
