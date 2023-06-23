@@ -96,7 +96,7 @@ const About = () => {
           </Link>
         </Stack>
         <Typography sx={{ color: "rgb(119, 119, 119)", fontWeight: "bold" }}>
-          Mahcks#0001 on Discord
+          mahcks on Discord
         </Typography>
       </Stack>
     </Box>
